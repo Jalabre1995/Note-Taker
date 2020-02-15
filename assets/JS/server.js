@@ -10,10 +10,10 @@ var PORT = process.env.PORT || 3000;
 ///To Parse the Data////
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
-app.use(express.static('assets'));
+app.use(express.static('JS'));
 
 
-//Routes///
+//Routes//
 app.get("/", function(req, res) {
     res.sendFile(path.join(__dirname, "index.html"));
   }); 
@@ -36,10 +36,8 @@ app.get("/", function(req, res) {
     res.json(true);
   })
 
-  ///Deleting the variables////
+  ///Deleting the text////
 
-
-  
 
   ////Listen to the Port/////
 app.listen(3000, function() {
