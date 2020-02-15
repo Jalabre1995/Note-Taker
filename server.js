@@ -10,7 +10,7 @@ var PORT = process.env.PORT || 3000;
 ///To Parse the Data////
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
-app.use(express.static('JS'));
+app.use("/assets",express.static('assets'));
 
 
 //Routes//
@@ -18,7 +18,7 @@ app.get("/", function(req, res) {
     res.sendFile(path.join(__dirname, "index.html"));
   }); 
   
-  app.get("/notes.html", function(req, res) {
+  app.get("/notes", function(req, res) {
   res.sendFile(path.join(__dirname, "notes.html"));
   });
   
@@ -27,10 +27,10 @@ app.get("/", function(req, res) {
   });
   ////To create new data created in the NoteTaker////
   app.post("/api/notes", function(req, res) {
-    const notes = JSON.aprse9fs.readFileSync('./db/db.json', 'utf-8')
+    const notes = require('./db/db.json');
     notes.push({
         title: req.body.title,
-        text : req.body.title 
+        text : req.body.text 
     });
     fs.wrtieFileSync('./db/db.json', JSON.stringify(notes));
     res.json(true);
