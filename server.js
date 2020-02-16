@@ -43,9 +43,9 @@ app.get("/", function(req, res) {
     res.send('Got a DELETE request at /api/notes/:id')
     const notes = JSON.parse(fs.readFileSync('./db/db.json' ));
     const newNotes = notes.filter(note => note.id !== req.params.id);
-    fs.wrtieFileSync('./db/db.json', JSON.stringify(newNotes));
-    res,json(true);
-  })
+    fs.writeFileSync('./db/db.json', JSON.stringify(newNotes));
+    res.json(true);
+  });
 
 
   ////Listen to the Port/////
