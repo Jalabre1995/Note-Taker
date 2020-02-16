@@ -1,5 +1,5 @@
 # Note-Taker
-Description Create an application that can be used to write, save, and delete notes. This application will use an express backend and save and retrieve note data from a JSON file.
+For this project, the goal was to create an application that can be used to write, save, and delete notes. This application will use an express backend and save and retrieve note data from a JSON file.
 
 The application frontend has already been created, it's your job to build the backend and connect the two.
 
@@ -22,3 +22,10 @@ DELETE /api/notes/:id - Should recieve a query paramter containing the id of a n
 User Story AS A user, I want to be able to write and save notes I WANT to be able to delete notes I've written before SO THAT I can organize my thoughts and keep track of tasks I need to complete
 
 Business Context For users that need to keep track of a lot of information, it's easy to forget or be unable to recall something important. Being able to take persistent notes allows users to have written information available when needed.
+
+#Files
+
+In this appication you will see a three folders. The folders are assets that carries a  css folder carrting a style.css, fontawesome.mincss. A JS folder with node_modules, index.js, and package-loc.json. And webfonts. And a db.json file. Outside the three folders is a index.html, notes.html, and serer.js files.
+
+# Challenges
+The process of connecting the files together ran smoothly.However, while I was creating my server.js and testing the code, the save notes were not appending on the left side of the application. Luckily I solved it by creating a varibale for 'fs' and require it.The problem that I am currenlty dealing with is deleting previous data in the application from local storage. When I run it in node.js, the error that I am recieving is "Cannot set headers after they are sent to the client." I searched what this syntax means and it is telling me that I am sending the body of the html to the server, but it has already been sent. So somewhere in my index.js file I am sending the header twice. 
