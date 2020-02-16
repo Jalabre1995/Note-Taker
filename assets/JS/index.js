@@ -119,10 +119,11 @@ var renderNoteList = function(notes) {
     );
 
     $li.append($span, $delBtn);
-    noteListItems.push($li);
+    noteListItems.push($li); 
   }
 
   $noteList.append(noteListItems);
+  console.log(renderNoteList);
 };
 
 // Gets notes from the db and renders them to the sidebar

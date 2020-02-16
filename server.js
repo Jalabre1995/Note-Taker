@@ -1,6 +1,7 @@
 ///Dependecies//
 var express = require("express");
 var path = require("path");
+var fs = require('fs');
 
 
 //Setting the express application///
@@ -30,13 +31,21 @@ app.get("/", function(req, res) {
     const notes = require('./db/db.json');
     notes.push({
         title: req.body.title,
-        text : req.body.text 
+        text : req.body.text, 
     });
-    fs.wrtieFileSync('./db/db.json', JSON.stringify(notes));
+    fs.writeFileSync('./db/db.json', JSON.stringify(notes));
     res.json(true);
   })
 
   ///Deleting the text////
+
+  app.delete('/api/notes/:id',function(req,res) {
+    res.send('Got a DELETE request at /api/notes/:id')
+    const notes = JSON.parse(fs.readFileSync('./db/db.json' ));
+    const newNotes = notes.filter(note => note.id !== req.params.id);
+    fs.wrtieFileSync('./db/db.json', JSON.stringify(newNotes));
+    res,json(true);
+  })
 
 
   ////Listen to the Port/////
